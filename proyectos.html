@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge - ¿Estás Preparado?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #F8F9FA;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #FF4081;
+    }
+
+    .slider-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .proyecto-card {
+      background-color: #E0F7FA;
+      width: 30%;
+      min-width: 30%;
+      padding: 20px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .proyecto-card:hover {
+      transform: scale(1.05);
+    }
+
+    .proyecto-titulo {
+      font-size: 24px;
+      color: #00796B;
+      margin-bottom: 10px;
+    }
+
+    .proyecto-descripcion {
+      font-size: 16px;
+      color: #004D40;
+      margin-bottom: 20px;
+    }
+
+    .proyecto-puntos {
+      font-size: 18px;
+      color: #004D40;
+      background: #FFECB3;
+      padding: 5px 15px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .slider-button {
+      background-color: #FF4081;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* Estilos para el dado más grande */
+    .dado-grande {
+      font-size: 80px;
+      color: #FF4081;
+      cursor: pointer;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    /* Estilos del Modal */
+    .modal {
+      display: none; /* Por defecto está oculto */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro transparente */
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 60%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .close-btn {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      float: right;
+      cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Challenge: ¿Estás Preparado?</h1>
+
+    <div class="slider-container">
+      <div class="slider" id="slider">
+        <!-- Proyectos -->
+        <div class="proyecto-card" data-proyecto="01">
+          <div class="proyecto-titulo">PROYECTO 01</div>
+          <div class="proyecto-descripcion">Implementación de la Solución</div>
+          <div class="proyecto-puntos">15000</div>
+        </div>
+        <div class="proyecto-card" data-proyecto="02">
+          <div class="proyecto-titulo">PROYECTO 02</div>
+          <div class="proyecto-descripcion">Gestión del Cambio</div>
+          <div class="proyecto-puntos">8000</div>
+        </div>
+        <div class="proyecto-card" data-proyecto="03">
+          <div class="proyecto-titulo">PROYECTO 03</div>
+          <div class="proyecto-descripcion">Alineación Estratégica</div>
+          <div class="proyecto-puntos">8000</div>
+        </div>
+        <div class="proyecto-card" data-proyecto="04">
+          <div class="proyecto-titulo">PROYECTO 04</div>
+          <div class="proyecto-descripcion">Evaluación Inicial</div>
+          <div class="proyecto-puntos">5000</div>
+        </div>
+        <div class="proyecto-card" data-proyecto="05">
+          <div class="proyecto-titulo">PROYECTO 05</div>
+          <div class="proyecto-descripcion">Monitoreo del Proyecto</div>
+          <div class="proyecto-puntos">12000</div>
+        </div>
+        <div class="proyecto-card" data-proyecto="06">
+          <div class="proyecto-titulo">PROYECTO 06</div>
+          <div class="proyecto-descripcion">Optimización de Recursos</div>
+          <div class="proyecto-puntos">7000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-controls">
+      <button class="slider-button prev" id="prevBtn">Anterior</button>
+      <button class="slider-button next" id="nextBtn">Siguiente</button>
+    </div>
+
+    <!-- Dado grande para abrir el modal -->
+    <div class="dado-grande" id="openEventModalBtn">🎲</div>
+  </div>
+
+  <!-- Modal de Evento -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeEventModalBtn">&times;</span>
+      <div class="card-header">EJEMPLO DE UNA TARJETA DE EVENTOS</div>
+      <div class="section">
+        <div class="section-title">DESCRIPCIÓN DEL EVENTO</div>
+        <div class="section-content">
+          Al momento de comunicar formalmente el proyecto a la organización, empiezan a circular
+          por los pasillos de la Universidad dudas, temores e interpretaciones diversas respecto
+          al objetivo, su alcance y consecuencias en la realidad del trabajo diario de docentes
+          y administrativos. A la vez que los más antiguos manifiestan preocupación por el cambio,
+          los más nuevos recuerdan experiencias frustrantes en anteriores trabajos que vivieron
+          un proceso similar.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">NIVEL DEL EVENTO</div>
+        <div class="section-content">2</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">EFICIENCIAS REQUERIDAS</div>
+        <div class="section-content">Capacidad para gestionar los cambios - Sistema de Governance</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">MODIFICADORES</div>
+        <div class="modificadores">
+          <div class="modificador-item">Coaching +1</div>
+          <div class="modificador-item">Planes de mitigación +1</div>
+          <div class="modificador-item">Roles y responsabilidades +1</div>
+          <div class="modificador-item">Proyectos: Gestión del Cambio +5</div>
+          <div class="modificador-item">Recursos: Gestión del Cambio +3</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">RESULTADO</div>
+        <div class="resultados">
+          <div class="resultado-box success">
+            <strong>Si tiene éxito</strong>
+            <p>+100 puntos</p>
+            <p>+USD 1.000 de presupuesto</p>
+            <small>(por la credibilidad ganada)</small>
+          </div>
+          <div class="resultado-box fail">
+            <strong>Si fracasa</strong>
+            <p>-50 puntos</p>
+            <p>-USD 200 de presupuesto</p>
+            <small>(por el gasto extra en resolver el problema)</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Variables para el slider
+    const slider = document.getElementById('slider');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let index = 0;
+
+    const totalItems = document.querySelectorAll('.proyecto-card').length;
+
+    // Mover al siguiente proyecto
+    nextBtn.addEventListener('click', () => {
+      if (index < totalItems - 3) {
+        index++;
+        slider.style.transform = `translateX(-${index * 33.33}%)`;
+      }
+    });
+
+    // Mover al proyecto anterior
+    prevBtn.addEventListener('click', () => {
+      if (index > 0) {
+        index--;
+        slider.style.transform = `translateX(-${index * 33.33}%)`;
+      }
+    });
+
+    // Abrir modal
+    const openEventModalBtn = document.getElementById("openEventModalBtn");
+    const eventModal = document.getElementById("eventModal");
+    const closeEventModalBtn = document.getElementById("closeEventModalBtn");
+
+    openEventModalBtn.addEventListener("click", () => {
+      eventModal.style.display = "block";
+    });
+
+    closeEventModalBtn.addEventListener("click", () => {
+      eventModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === eventModal) {
+        eventModal.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

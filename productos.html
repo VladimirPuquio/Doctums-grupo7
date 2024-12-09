@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Indie Flower', cursive;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      font-size: 3rem;
+      color: #1e3a8a;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .subheader {
+      font-size: 2rem;
+      color: #f43f5e;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: fit-content;
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      border: 3px solid #ff6f6f;
+    }
+
+    .profile .name {
+      margin-left: 15px;
+      font-size: 20px;
+      color: #ffcc66;
+      padding: 5px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      background-color: white;
+    }
+
+    .profile .progress-bar {
+      width: 120px;
+      height: 10px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .profile .progress-bar .progress {
+      width: 60%;
+      height: 100%;
+      background-color: #a0d6b4;
+      border-radius: 5px;
+    }
+
+    .sidebar {
+      position: absolute;
+      top: 20%;
+      right: 2%;
+    }
+
+    .sidebar div {
+      margin-bottom: 2rem;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 10rem;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar .recur {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .sidebar .mapa {
+      background-color: #f59e0b;
+      color: white;
+    }
+
+    .sidebar .eficie {
+      background-color: #f43f5e;
+      color: white;
+    }
+
+    .products {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .products h2 {
+      font-size: 28px;
+      color: #FF5A5F;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .products .product-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      gap: 30px;
+      justify-items: center;
+      margin: 0 auto;
+      padding: 0 20px;
+      max-width: 1200px;
+    }
+
+    .products .product-item {
+      background-color: #6e99e9; /* Color base para el fondo */
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 25px;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .products .product-item:before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px solid #ffffff;
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .products .product-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .products .product-item p {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .products .product-item .coins-box {
+      display: flex; /* Flexbox para alinear en fila */
+      justify-content: center; /* Asegura la alineación horizontal centrada */
+      align-items: center; /* Centra el contenido verticalmente */
+      gap: 5px; /* Espacio pequeño entre el número y el ícono */
+      background-color: white;
+      border-radius: 12px;
+      padding: 10px 20px; /* Ajuste en el espaciado interno */
+      margin-top: 10px;
+      border: 2px solid #F4C542;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  .products .product-item .coins-number {
+      font-size: 20px; /* Tamaño ajustado del número */
+      font-weight: bold;
+      color: #FFAB00;
+      display: inline-flex; /* Flex para mantener alineado el número con el ícono */
+      align-items: center; /* Alineación vertical centrada */
+      gap: 5px; /* Pequeño espacio entre el número y el ícono */
+  }
+  
+  .products .product-item .coins-number img {
+      width: 24px; /* Tamaño ajustado del ícono */
+      height: 24px;
+      object-fit: cover; /* Mantiene la proporción del ícono */
+  }
+  
+
+    /* Colores para los nombres de los productos */
+    .product-item:nth-child(1) p {
+      color: #be3a22; 
+    }
+
+    .product-item:nth-child(2) p {
+      color: #0c4c55; 
+    }
+
+    .product-item:nth-child(3) p {
+      color: #1c7e1c; 
+    }
+
+    .product-item:nth-child(4) p {
+      color: #270577; 
+    }
+
+    .product-item:nth-child(5) p {
+      color: #d4bb28; 
+    }
+
+    .product-item:nth-child(6) p {
+      color: #5c2c88; 
+    }
+
+    .product-item:nth-child(7) p {
+      color: #9c0d59; 
+    }
+
+    .product-item:nth-child(8) p {
+      color: #4B0082; 
+    }
+
+    /* Dado */
+    .dice-container {
+      text-align: center;
+      float: right;
+      margin-top: 40px;
+    }
+
+    .dice {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      width: 100px;
+      height: 100px;
+      background-color: #ffffff;
+      border: 3px solid #4a90e2;
+      border-radius: 10px;
+      margin: 0 auto 20px auto;
+      position: relative;
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Puntos del dado */
+    .dot {
+      width: 20px;
+      height: 20px;
+      background-color: #fff34b;
+      border-radius: 50%;
+      position: relative;
+      justify-self: center;
+      align-self: center;
+    }
+
+    /* Botón para lanzar */
+    .roll-button {
+      padding: 10px 20px;
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* Animación */
+    .dice.roll {
+      animation: rotateDice 1s ease-in-out;
+    }
+
+    @keyframes rotateDice {
+      0% {
+        transform: rotate(0);
+      }
+      25% {
+        transform: rotate(90deg);
+      }
+      50% {
+        transform: rotate(180deg);
+      }
+      75% {
+        transform: rotate(270deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">Challenge</div>
+  <div class="subheader">¿Estás Preparado?</div>
+
+  <!-- Profile -->
+  <div class="profile">
+    <img alt="Profile image" src="https://storage.googleapis.com/a1aa/image/9pVLaSBRDcaODxpwut3gcZJXauOvebeFhDhheIfV6JF6qvFPB.jpg" />
+    <div>
+      <div class="name">El Manco</div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <br>
+    <div class="recur"> <a href="recursos.html">RECUR</a></div>
+    <div class="mapa"><a href="index.html">MAPA</a></div>
+    <div class="eficie"><a href="eficencias.html">EFICIE</a></div>
+  </div>
+
+  <!-- Products Section -->
+  <div class="products">
+    <h2>Productos</h2>
+    <div class="product-list">
+      <div class="product-item">
+        <p>PROBLEMAS DE NEGOCIO QUE SE PRETENDEN RESOLVER</p>
+        <br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>ALCANCE DE LA SOLUCIÓN TECNOLÓGICA</p>
+        <br><br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>DEFICIÓN DE EXPECTATIVAS DE APEGO BASELIVE</p>
+        <br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>ANÁLISIS DE INTERFACES CON OTRAS APLICACIONES</p>
+        <br><br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>PRESUPUESTO APROBADO</p>
+        <br><br><br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>DISEÑO DE LOS INDICADORES DE RESULTADOS</p>
+        <br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>ELECIÓN DE PATROCINADORES</p>
+        <br><br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+      <div class="product-item">
+        <p>ELABORACIÓN DEL SISTEMA DE GOBERNANZA DEL PROYECTO</p>
+        <br>
+        <div class="coins-box">
+          <span class="coins-number">1000 <img src="https://storage.googleapis.com/a1aa/image/BJ5eKhzzd2TuVCuyUq2FVSIRFQlfjKobVc4vtqr3UIf209vnA.jpg" alt="Coin"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dado -->
+  <div class="dice-container">
+    <div class="dice" id="dice">
+      <div class="dot"></div>
+    </div>
+    <p id="dice-result"></p>
+    <button class="roll-button">Lanzar dado</button>
+  </div>
+
+  <script>
+    const dice = document.getElementById('dice');
+    const diceResult = document.getElementById('dice-result');
+    const rollButton = document.querySelector('.roll-button');
+
+    // Configuración de los puntos en el dado
+    const diceLayouts = {
+      1: [4],
+      2: [0, 8],
+      3: [0, 4, 8],
+      4: [0, 2, 6, 8],
+      5: [0, 2, 4, 6, 8],
+      6: [0, 1, 2, 6, 7, 8],
+    };
+
+    // Función para lanzar el dado
+    rollButton.addEventListener('click', () => {
+      const number = Math.floor(Math.random() * 6) + 1;
+      dice.classList.add('roll'); 
+
+      setTimeout(() => {
+        dice.classList.remove('roll'); 
+        renderDice(number); 
+        diceResult.textContent = `¡Sacaste ${number}! 🎉`;
+      }, 1000);
+    });
+
+    // Función para renderizar los puntos del dado
+    function renderDice(number) {
+      dice.innerHTML = ''; 
+      const layout = diceLayouts[number];
+      for (let i = 0; i < 9; i++) {
+        const dot = document.createElement('div');
+        dot.className = layout.includes(i) ? 'dot' : '';
+        dice.appendChild(dot);
+      }
+    }
+  </script>
+</body>
+</html>

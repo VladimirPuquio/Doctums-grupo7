@@ -1,0 +1,503 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Recursos</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Indie Flower', cursive;
+      background-color: #f9f9f9;
+      background-size: cover;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+      width: fit-content;
+      top: -3em;
+      margin-left: 4em;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      border: 4px solid #ff6f6f;
+    }
+
+    .profile .name {
+      margin-left: 20px;
+      font-size: 20px;
+      color: #ffcc66;
+      background-color: white;
+      padding: 5px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile .progress-bar {
+      width: 150px;
+      height: 15px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin-left: 20px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .profile .progress-bar .progress {
+      width: 60%;
+      height: 100%;
+      background-color: #a0d6b4;
+      border-radius: 10px;
+    }
+
+    .profile .highlight {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 25px;
+      color: #ff6f6f;
+    }
+
+    .header {
+      font-size: 7rem;
+      color: #1e3a8a;
+      text-align: center;
+    }
+
+    .subheader {
+      font-size: 2rem;
+      color: #f43f5e;
+      text-align: center;
+    }
+
+    /*apartado de monedas*/
+    .containerwa {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 95em;
+      margin-top: -10em;
+    }
+
+    .icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .label {
+      position: absolute;
+      bottom: -20px;
+      left: 40%;
+      transform: translateX(-50%);
+      background-color: white;
+      padding: 7px 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      color: #3366ff;
+      font-size: 20
+    }
+
+/*BOTONES*/
+.container {
+  display: flex; /* Asegúrate de que el contenedor esté configurado correctamente */
+  flex-direction: column; /* Coloca los botones en columna */
+  align-items: center;
+  gap: 50px; /* Espacio uniforme entre los botones */
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: -20em;
+  margin-left: 50em;
+  
+}
+.circle a{
+  text-decoration: none;
+  color:#5d6d7e ;
+}
+.circlem a{
+  text-decoration: none;
+  color: #5d6d7e;
+
+}
+
+.circlem{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #a3d6c6;
+  position: relative;
+  top: -20em;
+  margin-left: 50em;
+  text-decoration: none;
+}
+
+.circle:nth-child(1) {
+  background-color: #e74c3c;
+  color: #f9e79f;
+}
+
+.circle:nth-child(2) {
+  background-color: #a3d6c6;
+  color: #5d6d7e;
+  text-decoration: none;
+}
+
+.circle:nth-child(3) {
+  background-color: #a3d6c6;
+  color: #5d6d7e;
+}
+
+
+  
+
+
+    @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    /*Cards*/
+    .container-card {
+      width: 100%;
+      display: flex;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .title-cards {
+      width: 100%;
+      max-width: 1080px;
+      margin: auto;
+      font-size: 35;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+      color: #f25d7a;
+      margin-left: 6em;
+    }
+
+    .card {
+      width: 100%;
+      margin: 20px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid #369;
+      background: #a7d9c6;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+      transition: all 400ms ease-out;
+      cursor: default;
+      margin-left: 1em;
+    }
+
+    .contenido-card {
+      height: 30em;
+      margin: 6px;
+      background-color: #a7d9c6;
+    }
+
+    .titulo-card {
+      margin-top: 2em;
+      font-size: 2em;
+      color: #f25d7a;
+    }
+
+    .subtitulo-card {
+      line-height: 1.8;
+      color: #547bd4;
+      font-size: 1.2em;
+
+      margin-bottom: 5px;
+    }
+
+    .card:hover {
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(-3%);
+    }
+
+    .card img {
+      width: 100%;
+      height: 210px;
+    }
+
+    .card hr {
+      width: 150px;
+      /* Línea decorativa */
+      border: none;
+      border-top: 2px solid #547bd4;
+      /* Color de la línea */
+      margin: 30px;
+    }
+
+    .card .contenido-card {
+      padding: 15px;
+      text-align: center;
+    }
+
+
+    .card .footer-card {
+      display: flex;
+      margin-left: 1em;
+      margin-top: 3em;
+      gap: 20px;
+      /* Espaciado entre elementos */
+    }
+
+    .card .footer-card span {
+      background-color: white;
+      padding: 5px 40px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      /* Texto negro */
+    }
+
+    .card .footer-card img {
+      width: 25px;
+      /* Tamaño del icono */
+      height: 25px;
+    }
+
+
+
+    @media only screen and (min-width: 320px) and (max-width: 768px) {
+      .container-card {
+        flex-wrap: wrap;
+      }
+
+      .card {
+        margin: 15px;
+      }
+    }
+
+    .slider {
+      display: flex;
+      align-items: center;
+      position: relative;
+      max-width: 920px;
+      /* Ajustado para mostrar 3 tarjetas de 300px + márgenes */
+      margin: auto;
+      overflow: hidden;
+      /* Ocultar tarjetas fuera del área visible */
+      margin-left: 18em;
+    }
+
+    .container-card {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+      will-change: transform;
+      width: 100%;
+
+      /* Contenedor ajustado a las tarjetas */
+    }
+
+    .slider-arrow {
+      background-color: transparent; /* Fondo transparente */
+      border: none;
+      color: red; /* Flechas de color rojo */
+      font-size: 90px;
+      padding: 10px;
+      cursor: pointer;
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      transform: translateY(-50%); /* Asegura que esté verticalmente centrado */
+    }
+    
+    .left-arrow {
+      left: 0; /* Ajusta a la izquierda con un valor en píxeles */
+    }
+    
+    .right-arrow {
+      right: 0; /* Ajusta a la derecha con un valor en píxeles */
+    }
+    
+
+
+
+
+
+
+
+    /*Fin-Cards*/
+  </style>
+</head>
+
+<body>
+  <div class="header">Challenge</div>
+  <div class="subheader">¿Estás Preparado?</div>
+
+  <!-- PERFIL -->
+  <div class="profile">
+    <img alt="Profile image"
+      src="https://storage.googleapis.com/a1aa/image/9pVLaSBRDcaODxpwut3gcZJXauOvebeFhDhheIfV6JF6qvFPB.jpg" />
+    <div>
+      <div class="name">El Manco</div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+    <div class="highlight">
+      <i class="fas fa-exclamation"></i>
+    </div>
+  </div>
+
+  <!-- MONEDAS -->
+  <div class="containerwa">
+    <div class="icon">
+      <img alt="Dollar sign icon in yellow color" height="50"
+        src="https://storage.googleapis.com/a1aa/image/hUTUFSbtyW5jENrHfJezLFwQZVHoUyLBdsBl5RsscIl1Js4TA.jpg"
+        width="50" />
+    </div>
+    <div class="label">
+      9200
+    </div>
+  </div>
+
+
+  <!-- TARJETAS -->
+
+  <div class="title-cards">
+    <h2>RECURSOS</h2>
+  </div>
+
+  <div class="slider">
+    <button class="slider-arrow left-arrow">&#8249;</button>
+    <div class="container-card">
+
+      <div class="card">
+        <div class="contenido-card">
+          <h3 class="titulo-card">OFICINA DEL PROYECTO</h3>
+          <hr />
+          <p class="subtitulo-card">
+            SUELDO MENSUAL<br />S/ 250
+          </p>
+          <div class="footer-card">
+            <span>1000</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Icono dinero" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="contenido-card">
+          <h3 class="titulo-card">OFICINA DEL PROYECTO</h3>
+          <hr />
+          <p class="subtitulo-card">
+            SUELDO MENSUAL<br />S/ 250
+          </p>
+          <div class="footer-card">
+            <span>1000</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Icono dinero" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="contenido-card">
+          <h3 class="titulo-card">OFICINA DEL PROYECTO</h3>
+          <hr />
+          <p class="subtitulo-card">
+            SUELDO MENSUAL<br />S/ 250
+          </p>
+          <div class="footer-card">
+            <span>1000</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Icono dinero" />
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Agrega más tarjetas si lo deseas -->
+    </div>
+    <button class="slider-arrow right-arrow">&#8250; </button>
+  </div>
+
+
+ <!-- botones -->
+  
+  <div class="container">
+      <div class="circle"><a href="eficencias.html">EFICIE</a></div>
+      <div class="circlem"><a href="index.html">MAPA</a></div>
+      <div class="circle"><a href="productos.html">R.CUM</a></div>
+  </div>
+
+
+
+
+  <!--Fin   Tarjetas-->
+</body>
+<script>
+  const slider = document.querySelector(".container-card");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
+
+  let currentPosition = 0; // Posición actual de desplazamiento
+  const cardWidth = 300 + 20; // Ancho de la tarjeta + margen (300px + 10px * 2)
+  const totalCards = document.querySelectorAll(".card").length; // Total de tarjetas
+  const visibleCards = 3; // Número de tarjetas visibles
+  const maxScroll = (totalCards - visibleCards) * cardWidth; // Desplazamiento máximo
+
+  const slide = (direction) => {
+    if (direction === "left" && currentPosition > 0) {
+      currentPosition -= cardWidth;
+    } else if (direction === "right" && currentPosition < maxScroll) {
+      currentPosition += cardWidth;
+    }
+
+    slider.style.transform = `translateX(-${currentPosition}px)`;
+  };
+
+  leftArrow.addEventListener("click", () => slide("left"));
+  rightArrow.addEventListener("click", () => slide("right"));
+
+
+</script>
+
+</html>

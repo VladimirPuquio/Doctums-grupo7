@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge - Eficiencias</title>
+    <style>
+        /* Estilos básicos de la página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #f9f9f9;
+            background-size: cover;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: fit-content;
+            top: -10em;
+            margin-left: 4em;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            border: 4px solid #ff6f6f;
+        }
+
+        .profile .name {
+            margin-left: 20px;
+            font-size: 20px;
+            color: #ffcc66;
+            background-color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile .progress-bar {
+            width: 150px;
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .profile .progress-bar .progress {
+            width: 60%;
+            height: 100%;
+            background-color: #a0d6b4;
+            border-radius: 10px;
+        }
+
+        .profile .highlight {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 25px;
+            color: #ff6f6f;
+        }
+
+        .header {
+            font-size: 7rem;
+            color: #1e3a8a;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .subheader {
+            font-size: 2rem;
+            color: #f43f5e;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            margin-left: 14em;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #ff2b7e;
+            margin-bottom: 20px;
+            font-family: 'Comic Sans MS', sans-serif;
+        }
+
+        /* Diseño de la cuadrícula */
+        .efficiencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 2px solid #5159c2da;
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-align: left;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 118px;
+            position: relative;
+            font-family: 'Comic Sans MS', sans-serif;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Animación al hacer hover en la tarjeta */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 1em;
+            color: #ff2b7e;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            font-size: 1.5em;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .stars .empty {
+            color: #d1d1d1;
+        }
+
+        /* Barra de progreso */
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #6cdb8c;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 6px;
+        }
+
+        /* Fondo de la tarjeta activa */
+        .active-card {
+            background-color: #f0f8ff;
+        }
+
+        /* Estilos para los botones circulares */
+        .siderwa {
+            position: fixed;
+            top: 50%;
+            right: 2%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .siderwa div {
+            margin-bottom: 3rem;
+            text-align: center;
+            padding: 2.5rem;
+            border-radius: 10rem;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+.siderwa .recur,
+.siderwa .rcum,
+.siderwa .mapa {
+    font-size: 20px; /* Tamaño de fuente más pequeño */
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+        .siderwa .recur {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .siderwa .recur:hover {
+            background-color: #45a049;
+        }
+
+        .siderwa .rcum {
+            background-color: #e6e36a;
+            color: white;
+        }
+
+        .siderwa .rcum:hover {
+            background-color: #e6e36a;
+        }
+
+        .siderwa .mapa {
+            background-color: #91dbcb;
+            color: white;
+        }
+
+        .siderwa .mapa:hover {
+            background-color: #91dbcb;
+        }
+        .siderwa .dado {
+    margin-top: 2rem; /* Espaciado superior */
+    text-align: center;
+}
+
+.siderwa .dado img {
+    width: 100px; /* Aumenta el tamaño de la imagen */
+    height: 100px; /* Aumenta el tamaño de la imagen */
+    border-radius: 0; /* Quita el borde circular */
+    box-shadow: none; /* Quita la sombra si no la quieres */
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">Challenge</div>
+    <div class="subheader">¿Estás Preparado?</div>
+
+    <div class="profile">
+        <img alt="Profile image" src="https://storage.googleapis.com/a1aa/image/9pVLaSBRDcaODxpwut3gcZJXauOvebeFhDhheIfV6JF6qvFPB.jpg" />
+        <div>
+            <div class="name">El Manco</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+        <div class="highlight">
+            <i class="fas fa-exclamation"></i>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Eficiencias</h2>
+        <div class="efficiencies-grid">
+            <!-- Tarjetas 1 a 12 -->
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 01</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                    <span class="star empty">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 02</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 50%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 03</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 04</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 05</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 06</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 07</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 08</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 09</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                    <span class="star empty">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 10</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 11</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="card" onclick="toggleActiveCard(this)">
+                <h3>Eficiencias 12</h3>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star empty">★</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Siderwa (botones flotantes) -->
+    <div class="siderwa">
+        <div class="recur">Recur</div>
+        <div class="mapa">Mapa</div>
+        <div class="rcum">R.CUM</div>
+        <!-- Contenedor de la imagen del dado -->
+        <div class="dado">
+            <img src="pngwing.com.png" alt="Dado 6" />
+        </div>
+    </div>
+    
+
+    <script>
+        function toggleActiveCard(card) {
+            card.classList.toggle('active-card');
+        }
+    </script>
+</body>
+</html>

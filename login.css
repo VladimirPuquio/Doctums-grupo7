@@ -1,0 +1,130 @@
+/* Fondo y cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('/imagenes/image.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+.login-container {
+    width: 350px; /* Ajustamos el ancho */
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 30px; /* Más espacio interno */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Título */
+.title {
+    font-size: 2em;
+    color: #f1c40f;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Estilos de etiquetas e inputs */
+label {
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #ddd;
+}
+
+input {
+    width: calc(100% - 20px); /* Espaciado mejorado */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Botones principales */
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Botón de crear cuenta */
+button.create-account {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Efecto hover */
+button:hover {
+    opacity: 0.9;
+}
+
+/* Estilo de enlaces */
+.forgot-links a {
+    color: #f1c40f;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.forgot-links a:hover {
+    text-decoration: underline;
+}
+
+/* Mejora en inputs y botones en pantallas pequeñas */
+@media screen and (max-width: 400px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+/* Estilo para el formulario de registro */
+.login-container {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+h1.title {
+    font-size: 24px;
+    color: #f1c40f;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #2ecc71;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e9dc2f;
+}

@@ -1,0 +1,467 @@
+<html>
+
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Indie Flower', cursive;
+      background-color: #f9f9f9;
+      background-size: cover;
+    }
+
+
+    .profile {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 20px;
+      /* Más espacio interno */
+      border-radius: 15px;
+      /* Bordes más redondeados */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Sombra más marcada */
+      position: relative;
+      width: fit-content;
+      top: -10em;
+      margin-left: 4em;
+    }
+
+    .profile img {
+      width: 100px;
+      /* Imagen más grande */
+      height: 100px;
+      border-radius: 15px;
+      /* Bordes redondeados */
+      border: 4px solid #ff6f6f;
+      /* Borde más grueso */
+    }
+
+    .profile .name {
+      margin-left: 20px;
+      /* Más espacio entre la imagen y el texto */
+      font-size: 20px;
+      /* Texto más grande */
+      color: #ffcc66;
+      background-color: white;
+      padding: 5px 10px;
+      /* Espaciado interno más grande */
+      border-radius: 8px;
+      /* Bordes más redondeados */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile .progress-bar {
+      width: 150px;
+      /* Barra más ancha */
+      height: 15px;
+      /* Barra más alta */
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      /* Bordes redondeados */
+      margin-left: 20px;
+      /* Espaciado entre la barra y el texto */
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .profile .progress-bar .progress {
+      width: 60%;
+      /* Progreso aumentado */
+      height: 100%;
+      background-color: #a0d6b4;
+      border-radius: 10px;
+      /* Bordes redondeados */
+    }
+
+    .profile .highlight {
+      position: absolute;
+      top: 10px;
+      /* Ajustado para mayor separación del borde superior */
+      right: 10px;
+      font-size: 25px;
+      /* Ícono más grande */
+      color: #ff6f6f;
+    }
+
+    .header {
+      font-size: 7rem;
+      color: #1e3a8a;
+      text-align: center;
+    }
+
+    .subheader {
+      font-size: 2rem;
+      color: #f43f5e;
+      text-align: center;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin: -3rem auto;
+      width: 45%;
+      height: 40%;
+      margin-top: -8em;
+    }
+
+    .calendar div {
+      text-align: center;
+      padding: 0.5rem;
+      border: 1px solid #1e3a8a;
+      border-radius: 0.25rem;
+      font-size: 25;
+    }
+
+    .calendar .header {
+      font-weight: bold;
+      background-color: #f9f9f9;
+      font-size: 40;
+    }
+
+    .calendar .today {
+      background-color: #f43f5e;
+      color: white;
+    }
+
+    .sidebar {
+      position: absolute;
+      top: 30%;
+      left: 3%;
+    }
+
+    .sidebar div {
+      margin-bottom: 3rem;
+      text-align: center;
+      padding: 2.5rem;
+      border-radius: 10rem;
+      font-size: 30px;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .sidebar .mapa {
+      background-color: #34d399;
+      color: #1e3a8a;
+    }
+
+    .sidebar .eficie {
+      background-color: #f43f5e;
+      color: #fbbf24;
+    }
+
+    .siderwa .recur {
+      background-color: #3b82f6;
+      color: #fbbf24;
+    }
+
+    .siderwa .rcum {
+      background-color: #34d399;
+      color: #1e3a8a;
+    }
+
+    /*TARJETAS PROYECTOS*/
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .card {
+      width: 150px;
+      height: 250px;
+      background-color: #ffeb3b;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      top: 6em;
+      margin-right: -3em;
+      margin-left: 4em;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px solid white;
+      border-radius: 8px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #3f51b5;
+    }
+
+    .card p {
+      margin: 5px 0;
+      font-size: 18px;
+      color: #3f51b5;
+    }
+
+    .card span {
+      font-size: 24px;
+      color: #3f51b5;
+    }
+
+
+    .dice {
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      text-align: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: #f43f5e;
+      color: white;
+      font-weight: bold;
+      transition: transform 0.5s ease;
+    }
+
+    .coins {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      text-align: center;
+    }
+
+    .coins img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .coins p {
+      font-weight: bold;
+    }
+
+    .task-list {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #fbbf24;
+      border-radius: 0.5rem;
+      max-width: 300px;
+      margin: 1rem auto;
+      display: none;
+    }
+
+    .task-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .siderwa {
+      position: absolute;
+      top: 30%;
+      left: 3%;
+      margin-left: 103em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .siderwa div {
+      margin-bottom: 3rem;
+      text-align: center;
+      padding: 2.5rem;
+      border-radius: 10rem;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .siderwa .recur,
+    .siderwa .rcum {
+      font-size: 30px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">Challenge</div>
+  <div class="subheader">¿Estás Preparado?</div>
+
+  <div class="profile">
+    <img alt="Profile image"
+      src="https://storage.googleapis.com/a1aa/image/9pVLaSBRDcaODxpwut3gcZJXauOvebeFhDhheIfV6JF6qvFPB.jpg" />
+    <div>
+      <div class="name">El Manco</div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+    <div class="highlight">
+      <i class="fas fa-exclamation"></i>
+    </div>
+  </div>
+
+
+
+  <div class="calendar" id="calendar">
+    <div class="header">DOM</div>
+    <div class="header">LUN</div>
+    <div class="header">MAR</div>
+    <div class="header">MIE</div>
+    <div class="header">JUE</div>
+    <div class="header">VIE</div>
+    <div class="header">SAB</div>
+    <!-- Días del mes -->
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+    <div>04</div>
+    <div>05</div>
+    <div>06</div>
+    <div>07</div>
+    <div>08</div>
+    <div>09</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div class="today">19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div>30</div>
+    <div>31</div>
+  </div>
+
+  <div class="sidebar">
+    <div class="mapa">MAPA</div>
+    <div class="eficie"><a href="eficencias.html">EFICIE</a></div>
+  </div>
+
+  <div class="siderwa">
+    <div class="recur" id="openModalBtn"> <a href="recursos.html">RECUR</a></div>
+    <div class="rcum"> <a href="productos.html">R.CUM</a></div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="card">
+      <h2>PROYECTO</h2>
+      <p>01</p>
+      <span>+</span>
+    </div>
+    <div class="card">
+      <h2>PROYECTO</h2>
+      <p>02</p>
+      <span>+</span>
+    </div>
+    <div class="card">
+      <h2>PROYECTO</h2>
+      <p>03</p>
+      <span>+</span>
+    </div>
+  </div>
+  <!--<div class="projects">
+    <div id="proyecto1">PROYECTO 01 +</div>
+    <div id="proyecto2">PROYECTO 02 +</div>
+    <div id="proyecto3">PROYECTO 03 +</div>
+  </div> -->
+
+  <div class="dice" id="dice" onclick="rollDice()">
+    ¡Tirar Dado!
+</div>
+
+<div id="taskList" class="task-list">
+    <ul id="taskListContent"></ul>
+</div>
+
+
+
+
+
+  <script>
+    let currentPlayer = 1; // Jugador actual: 1 o 2
+    let playerPosition = { 1: 0, 2: 0 }; // Posición de los jugadores en el tablero
+    const numPlayers = 2;
+
+    // Función para tirar el dado
+    function rollDice() {
+      const diceValue = Math.floor(Math.random() * 6) + 1;
+      const dice = document.getElementById("dice");
+
+      // Añadir animación de giro
+      dice.style.transform = "rotate(3600deg)";
+      setTimeout(() => {
+        dice.style.transform = "rotate(0deg)";
+        alert("Número en el dado: " + diceValue);
+        movePlayer(diceValue);
+        // Cambiar jugador
+        currentPlayer = currentPlayer === 1 ? 2 : 1;
+      }, 500);
+    }
+
+    // Función para mover al jugador
+    function movePlayer(diceValue) {
+      playerPosition[currentPlayer] += diceValue;
+      const currentCell = document.querySelector(`#calendar div:nth-child(${playerPosition[currentPlayer] + 7})`);
+      if (currentCell) {
+        currentCell.style.backgroundColor = '#34d399'; // Resaltar la celda en la que cayó el jugador
+      }
+    }
+
+    // Asignar tareas a los proyectos
+    document.getElementById('proyecto1').onclick = function () { showTasks('Proyecto 01', ['Tarea 1', 'Tarea 2', 'Tarea 3', 'Tarea 4', 'Tarea 5']); };
+    document.getElementById('proyecto2').onclick = function () { showTasks('Proyecto 02', ['Tarea A', 'Tarea B', 'Tarea C', 'Tarea D', 'Tarea E']); };
+    document.getElementById('proyecto3').onclick = function () { showTasks('Proyecto 03', ['Tarea X', 'Tarea Y', 'Tarea Z', 'Tarea W', 'Tarea V']); };
+
+    // Función para mostrar las tareas de un proyecto
+    function showTasks(project, tasks) {
+      const taskList = document.getElementById("taskList");
+      const taskListContent = document.getElementById("taskListContent");
+      taskListContent.innerHTML = `<h3>${project}</h3>`;
+      tasks.forEach(task => {
+        const listItem = document.createElement("li");
+        listItem.textContent = task;
+        taskListContent.appendChild(listItem);
+      });
+      taskList.style.display = "block";
+    }
+
+    // APARTADAO DE TABLA 
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
